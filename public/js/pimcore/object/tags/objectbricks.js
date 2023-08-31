@@ -262,10 +262,7 @@ pimcore.object.tags.objectbricks = Class.create(pimcore.object.tags.abstract, {
             var dataProvider = {
                 getDataForField: function (fieldConfig) {
                     var name = fieldConfig.name;
-                    if(name in currentData){
-                        return currentData[name];
-                    }
-                    return fieldConfig['defaultValue'];
+                    return currentData[name];
                 },
 
                 getMetaDataForField: function (fieldConfig) {
