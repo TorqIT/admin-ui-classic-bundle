@@ -116,6 +116,14 @@ class UserController extends AdminAbstractController implements KernelController
                 'active' => $request->request->getBoolean('active'),
             ]);
 
+            if ($type === 'user' && $user instanceof User) {
+                $currentUser = $this->getAdminUser();
+                if ($currentUser instanceof User && $currentUser->getLanguage()) {
+                    $user->setLanguage($currentUser->getLanguage());
+                    $user->save();
+                }
+            }
+
             if ($request->get('rid')) {
                 $rid = (int)$request->get('rid');
                 $rObject = $className::getById($rid);
