@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Pimcore\Bundle\AdminBundle\Service\GridData;
 
-use Pimcore\Bundle\AdminBundle\Service\ElementService;
+use Pimcore\Bundle\AdminBundle\Service\ElementServiceInterface;
 use Pimcore\Model;
 use Pimcore\Model\Asset\MetaData\ClassDefinition\Data\Data;
 use Pimcore\Model\Element\Service;
@@ -104,8 +104,8 @@ class Asset extends Element
             return $thumbnailMethod;
         }
 
-        // Delegate to ElementService to keep list view and tile view behavior aligned
-        $elementService = \Pimcore::getContainer()->get(ElementService::class);
+        // Delegate to ElementServiceInterface to keep list view and tile view behavior aligned
+        $elementService = \Pimcore::getContainer()->get(ElementServiceInterface::class);
 
         return $elementService->getThumbnailUrl($asset, $params);
     }
